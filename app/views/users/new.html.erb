@@ -1,6 +1,6 @@
 <div>
 <h1>New user goes here</h1>
-<form action="/users" method="POST" accept-charset="UTF-8">
+<!-- <form action="/users" method="POST" accept-charset="UTF-8">
 	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
 
 
@@ -11,15 +11,25 @@
 	<label>Password:</label><br>
 	<input type="text" name="user[password]"><br><br>
 	<input type="submit" name="submit">
-</form>
-
-<!-- <form accept-charset="UTF-8" action="/users" method="post">
-	<label id="user_name">Name</label>
-	<input type="text" id="user_name" name="user[name]" /><br />
-	<label id="user_email">Email</label>
-	<input type="email" id="user_email" name="user[email]" /><br />
-	<label id="user_password">Password</label>
-	<input type="password" id="user_password" name="user[password]" /><br />
-	<input type="submit" name="commit" value="submit" />
 </form> -->
+
+<!-- <%= form_tag("/users", method:"POST") do %>
+	<%= label_tag(:name) %>
+	<%= text_field_tag(:name) %>
+	<br>
+	<%= label_tag(:email) %>
+	<%= email_field_tag(:email) %>
+	<br>
+	<%= label_tag(:password) %>
+	<%= password_field_tag(:password) %>
+	<br>
+	<%= submit_tag %>
+<%end%> -->
+
+<%= form_for :user, url:{action: "create"} do |f| %>
+	Username: <%= f.text_field :username, value: "Enter username" %> <br>
+	Email: <%= f.text_field :email, value:"example@example.com" %> <br>
+	Password: <%= f.text_field :password %> <br>
+	<%= f.submit %>
+<%end%>
 </div>
